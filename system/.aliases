@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias repo="cd ~/repo/"
+alias dotfiles="cd ~/repo/dotfiles"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
