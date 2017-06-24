@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function pocket() {
+    open "https://getpocket.com/a/queue/"
+}
+
+function github() {
+    open "https://github.com/"
+}
+
+function twitter() {
+    open "https://twitter.com/"
+}
+
+function facebook() {
+    open "https://www.facebook.com/"
+}
+
+function eksi() {
+    open "https://eksisozluk.com/"
+}
+
+function rpr() {
+    open "https://www.reddit.com/r/programming/"
+}

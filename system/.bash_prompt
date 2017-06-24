@@ -1,0 +1,42 @@
+function _e () {
+  local color; local escape; local newline; local bold=0
+  if [[ $1 == "bold" ]]; then
+    shift; bold=1
+  fi
+  case $1 in
+    white  ) color=37 ;;
+    red    ) color=31 ;;
+    green  ) color=32 ;;
+    yellow ) color=33 ;;
+    blue   ) color=34 ;;
+    purple ) color=35 ;;
+    cyan   ) color=36 ;;
+    gray   ) color=90 ;;
+    random ) color=$((31 + $RANDOM % 5))
+             bold=$(($RANDOM % 2));;
+  esac
+  echo -ne "\[\e[${bold};${color}m\]${@:2}\[\e[0m\]"
+}
+
+function _parse_git_branch() {
+    BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    if [[ $BRANCH == 'master' ]]; then
+      _e bold gray "master"
+    elif [[ $BRANCH == 'trunk' ]]; then
+      _e bold gray "trunk"
+    elif [[ $BRANCH ]]; then
+      _e yellow "$BRANCH"
+    fi
+}
+
+function _update_ps1() {
+    export PS1=$(
+      _e gray "[`date +%H:%M`] "
+      _parse_git_branch
+      echo -n " \W"
+      _e bold random " ▸ "
+    )
+}
+
+export _update_ps1
+export PROMPT_COMMAND="_update_ps1"
