@@ -13,3 +13,8 @@ export HISTCONTROL='ignoreboth';
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md="${yellow}";
+
+# Go exports
+export GOPATH=$HOME/repo/gocode
+export GOBIN=$HOME/repo/gocode/bin
+export PATH=$HOME/repo/gocode/bin:$PATH
