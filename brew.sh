@@ -22,5 +22,6 @@ brew install jq
 brew install rsync
 brew install bash-completion2
 brew install cowsay
+brew install httpie
 
 brew cleanup
