@@ -35,3 +35,7 @@ alias path="echo -e ${PATH//:/\\n}"
 
 # Use vim not vi
 alias vi="vim"
+
+# go stuff
+alias gosrc="cd $GOPATH/src"
+alias gome="cd $GOPATH/src/github.com/bariyu"
