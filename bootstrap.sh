@@ -12,11 +12,14 @@ function copy_vim() {
 
 function link_agents() {
     local src="$REPO_DIR/AGENTS.md"
-    local target
+    local target bak i
     for target in "$HOME/.claude/CLAUDE.md" "$HOME/.codex/AGENTS.md" "$HOME/AGENTS.md"; do
         mkdir -p "$(dirname "$target")"
         if [ -e "$target" ] && [ ! -L "$target" ]; then
-            mv "$target" "$target.backup"
+            # Back up a real file without ever clobbering an existing backup.
+            bak="$target.backup"; i=1
+            while [ -e "$bak" ]; do bak="$target.backup.$i"; i=$((i + 1)); done
+            mv "$target" "$bak"
         fi
         ln -sfn "$src" "$target"
     done
